@@ -25,7 +25,7 @@ Our architecture integrates:
 
 | Section | Link |
 |--------|------|
-| Full Spec | [whitepaper/QRUPI_Complete_Technical_Specification.pdf](whitepaper/QRUPI_Complete_Technical_Specification.pdf) |
+| Full Spec | [whitepaper/QRUPI_Complete_Technical_Specification.pdf]([whitepaper/QRUPI_Complete_Technical_Specification.pdf](https://drive.google.com/file/d/1xbv2uq2P0ApMy6oSQPSvQB76l6mwIvlO/view?usp=sharing)) |
 | Architecture | [docs/architecture.md](docs/architecture.md) |
 | Roadmap | [docs/roadmap.md](docs/roadmap.md) |
 | Threat Model | [docs/threat-model.md](docs/threat-model.md) |
@@ -51,8 +51,8 @@ We’re looking for contributors interested in:
 - Rust, Solidity, TypeScript
 - ZK circuit engineering (Cairo, RISC Zero, Circom)
 
-> Contact: [kritagya@qrupi.dev] (or your email)  
-> Twitter: [@yourhandle]  
+> Contact: [jhakritagya45@gmail.com] 
+> Twitter: [[@yourhandle](https://x.com/kritagyajha1)]  
 > Join our Discord: (coming soon)
 
 ---
