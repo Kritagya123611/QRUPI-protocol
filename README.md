@@ -59,5 +59,8 @@ We’re looking for contributors interested in:
 
 ## 🛡 License
 
-MIT / CC-BY-NC-SA
+QRUPI is released under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0** license.
+
+Read full license terms [here](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 
