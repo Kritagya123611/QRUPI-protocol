@@ -23,13 +23,13 @@ Our architecture integrates:
 
 ##  Documentation
 
-| Section | Link |
-|--------|------|
-| Full Spec | [(https://drive.google.com/file/d/1xbv2uq2P0ApMy6oSQPSvQB76l6mwIvlO/view?usp=sharing)]([https://drive.google.com/file/d/1xbv2uq2P0ApMy6oSQPSvQB76l6mwIvlO/view?usp=sharing]) |
-| Architecture | [docs/architecture.md](docs/architecture.md) |
-| Roadmap | [docs/roadmap.md](docs/roadmap.md) |
-| Threat Model | [docs/threat-model.md](docs/threat-model.md) |
-| FAQ | [docs/faq.md](docs/faq.md) |
+| Section       | Link                                                                 |
+|---------------|----------------------------------------------------------------------|
+| Full Spec     | [View PDF on Google Drive](https://drive.google.com/file/d/1xbv2uq2P0ApMy6oSQPSvQB76l6mwIvlO/view?usp=sharing) |
+| Architecture  | [docs/architecture.md](docs/architecture.md)                         |
+| Roadmap       | [docs/roadmap.md](docs/roadmap.md)                                   |
+| Threat Model  | [docs/threat-model.md](docs/threat-model.md)                         |
+| FAQ           | [docs/faq.md](docs/faq.md)                                           |
 
 ---
 
