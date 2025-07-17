@@ -28,7 +28,7 @@ pub fn run_hybrid_handshake() {
     let mut hasher = Sha3_256::new();
     hasher.update(local_ecdh_secret.as_bytes());              
     hasher.update(kyber_sender_secret.as_bytes());            
-    let local_hybrid_secret = hasher.finalize();              // combined
+    let local_hybrid_secret = hasher.finalize();              
 
 
     let mut hasher = Sha3_256::new();
