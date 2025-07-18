@@ -4,7 +4,6 @@ use pqcrypto_traits::kem::SharedSecret;
 use hex;
 
 pub fn run_kyber_demo() {
-    // Kyber KEM: key generation, encapsulation, decapsulation
     let (pk, sk) = kyber_keypair();
     let (ss_sender, ciphertext) = encapsulate(&pk);
     let ss_receiver = decapsulate(&ciphertext, &sk);

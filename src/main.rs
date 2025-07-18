@@ -1,51 +1,46 @@
-use std::io::{self, Write};
-
+use dialoguer::{theme::ColorfulTheme, Select};
 use qrupi_crypto::qrupi::{
-    kem,
-    sign,
-    hybrid,
-    fhe,
-    fhe_hybrid,
-    engine,
+    kem, sign, hybrid, fhe, fhe_hybrid, engine, privacy_bridge,
 };
-
 
 fn main() {
     loop {
-        println!("\n==== 🔐 QRUPI Protocol CLI ====");
-        println!("1. Run Kyber KEM (Key Exchange)");
-        println!("2. Run Dilithium Signature Demo");
-        println!("3. Run Hybrid Key Exchange (ECDH + Kyber)");
-        println!("4. Run FHE Add + Mul Demo");
-        println!("5. Run FHE Encrypted Hybrid Secret");
-        println!("6. Run Full QRUPI Engine Demo");
-        println!("0. Exit");
-        print!("Choose an option: ");
-        io::stdout().flush().unwrap();
+        let options = vec![
+            "Run Kyber KEM (Key Exchange)",
+            "Run Dilithium Signature Demo",
+            "Run Hybrid Key Exchange (ECDH + Kyber)",
+            "Run FHE Add + Mul Demo",
+            "Run FHE Encrypted Hybrid Secret",
+            "Run Full QRUPI Engine Demo",
+            "Privacy Bridge Cross-Chain Transfer Demo",
+            "Exit",
+        ];
 
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-        let choice = input.trim();
+        let selection = Select::with_theme(&ColorfulTheme::default())
+            .with_prompt(" QRUPI Protocol CLI Menu")
+            .items(&options)
+            .default(0)
+            .interact()
+            .unwrap();
 
-        match choice {
-            "1" => kem::run_kyber_demo(),
-            "2" => sign::run_dilithium_demo(),
-            "3" => {
+        match selection {
+            0 => kem::run_kyber_demo(),
+            1 => sign::run_dilithium_demo(),
+            2 => {
                 let _ = hybrid::get_hybrid_secret(); // already prints
             }
-            "4" => fhe::fhe_addition_demo(),
-            "5" => {
+            3 => fhe::fhe_addition_demo(),
+            4 => {
                 let secret = hybrid::get_hybrid_secret();
                 fhe_hybrid::encrypt_and_decrypt(&secret);
             }
-            "6" => engine::run_qrupi_pipeline(),
-            "0" => {
-                println!("Goodbye.");
+            5 => engine::run_qrupi_pipeline(),
+            6 => privacy_bridge::demo_cross_chain_transfer(),
+            7 => {
+                println!(" Goodbye.");
                 break;
             }
-            _ => println!("❌ Invalid option, try again."),
+            _ => unreachable!(),
         }
     }
 }
-
-// This is the main entry point for the QRUPI CLI application.
