@@ -5,7 +5,7 @@ use pqcrypto_traits::kem::SharedSecret;
 use sha3::{Digest, Sha3_256};
 use hex;
 
-pub fn run_hybrid_handshake() -> [u8; 32] {
+pub fn get_hybrid_secret() -> [u8; 32] {
     // ECDH part
     let local_secret = EphemeralSecret::new(OsRng);
     let local_public = X25519PublicKey::from(&local_secret);
