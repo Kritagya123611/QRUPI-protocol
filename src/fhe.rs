@@ -1,7 +1,8 @@
 use tfhe::shortint::prelude::*;
 
 pub fn fhe_addition_demo() {
-    let params = PARAM_MESSAGE_4_CARRY_4;
+    use tfhe::shortint::parameters::PARAM_MESSAGE_2_CARRY_2;
+    let params = PARAM_MESSAGE_2_CARRY_2;
 
     let (client_key, server_key) = gen_keys(params);
     let a = 2;

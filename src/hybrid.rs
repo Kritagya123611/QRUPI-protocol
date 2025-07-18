@@ -5,11 +5,8 @@ use pqcrypto_traits::kem::SharedSecret;
 use sha3::{Digest, Sha3_256};
 use hex;
 
-
-pub fn run_hybrid_handshake() {
-
-    //ye hai ecdh ka part
-    
+pub fn run_hybrid_handshake() -> [u8; 32] {
+    // ECDH part
     let local_secret = EphemeralSecret::new(OsRng);
     let local_public = X25519PublicKey::from(&local_secret);
 
@@ -19,17 +16,16 @@ pub fn run_hybrid_handshake() {
     let local_ecdh_secret = local_secret.diffie_hellman(&remote_public);
     let remote_ecdh_secret = remote_secret.diffie_hellman(&local_public);
 
-    //yaha se kyber ka part
-
+    // Kyber part
     let (kyber_pk, kyber_sk) = kyber_keypair();
     let (kyber_sender_secret, ciphertext) = encapsulate(&kyber_pk);
     let kyber_receiver_secret = decapsulate(&ciphertext, &kyber_sk);
 
+    // Hash karenge to derive the shared hybrid secret
     let mut hasher = Sha3_256::new();
-    hasher.update(local_ecdh_secret.as_bytes());              
-    hasher.update(kyber_sender_secret.as_bytes());            
-    let local_hybrid_secret = hasher.finalize();              
-
+    hasher.update(local_ecdh_secret.as_bytes());
+    hasher.update(kyber_sender_secret.as_bytes());
+    let local_hybrid_secret = hasher.finalize();
 
     let mut hasher = Sha3_256::new();
     hasher.update(remote_ecdh_secret.as_bytes());
@@ -39,4 +35,8 @@ pub fn run_hybrid_handshake() {
     println!("Local  Hybrid Secret: {}", hex::encode(&local_hybrid_secret));
     println!("Remote Hybrid Secret: {}", hex::encode(&remote_hybrid_secret));
     println!("Hybrid secrets match: {}", local_hybrid_secret == remote_hybrid_secret);
+
+    let mut output = [0u8; 32];
+    output.copy_from_slice(&local_hybrid_secret);
+    output 
 }
